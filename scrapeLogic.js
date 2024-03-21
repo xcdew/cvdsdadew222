@@ -15,29 +15,39 @@ const scrapeLogic = async (res) => {
         : puppeteer.executablePath(),
   });
   try {
-    const page = await browser.newPage();
+    const pages = await browser.pages();
+    const page = pages[0]; // Get the first page, which is the current tab
+    await page.goto('https://www.betpawa.com.gh/login?returnPath=%2Fgames&gameId=aviator&filter=all');
 
-    await page.goto("https://developer.chrome.com/");
+    await page.waitForSelector('#login-form-phoneNumber');
+    await page.type('#login-form-phoneNumber', '575000356');
+    await page.type('#login-form-password-input', 'rpZCmN$vK3qh4');
+    await page.click('[data-test-id="logInButton"]');
 
-    // Set screen size
-    await page.setViewport({ width: 1080, height: 1024 });
+    await page.waitForSelector('.messages-container.scroll-y');
 
-    // Type into search box
-    await page.type(".search-box__input", "automate beyond recorder");
+    await page.evaluate(() => {
+        function main() {
+            var button = document.querySelector('.btn-claim');
+            if (button) {
+                button.click();
+            }
+        }
 
-    // Wait and click on first result
-    const searchResultSelector = ".search-box__link";
-    await page.waitForSelector(searchResultSelector);
-    await page.click(searchResultSelector);
+        setInterval(main, 5);
+    });
 
-    // Locate the full title with a unique string
-    const textSelector = await page.waitForSelector(
-      "text/Customize and automate"
-    );
-    const fullTitle = await textSelector.evaluate((el) => el.textContent);
+    var n = 0;
+
+    function read() {
+        console.log(`Puppeteer has been running for ${n}s`)
+        n = n + 1;
+    }
+
+    setInterval(read, 1000);
 
     // Print the full title
-    const logStatement = `The title of this blog post is ${fullTitle}`;
+    const logStatement = `Running...`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
