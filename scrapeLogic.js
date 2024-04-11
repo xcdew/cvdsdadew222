@@ -32,11 +32,12 @@ const scrapeLogic = async (res) => {
       });
     }
 
-    await delay (10000)
-
+    await delay(10000);
+/**
+    
     const frame = page.frames().find(frame => frame.url().includes('aviator-next.spribegaming.com'));
 
-    await frame.evaluate(() => {
+   setTimeout(timer, 1000); await frame.evaluate(() => {
       function main(){
         var button = document.querySelector('.btn.btn-warning.btn-claim');
         if (button) {
@@ -45,7 +46,7 @@ const scrapeLogic = async (res) => {
     }
 
     setInterval(main, 0);
-    });
+    });  **/
 
     seconds = 0;
 
