@@ -8,9 +8,8 @@ const scrapeLogic = async (res) => {
       "--no-sandbox",
       "--single-process",
       "--no-zygote",
-      `--disable-extensions-except=${StayFocusd}`, 
-      `--load-extension=${StayFocusd}`,
-      "--enable-automation",
+      `--disable-extensions-except=${/usr/src/app/extension}`, 
+      `--load-extension=${/usr/src/app/extension}`,
     ],
     executablePath:
       process.env.NODE_ENV === "production"
