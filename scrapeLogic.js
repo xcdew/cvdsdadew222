@@ -36,20 +36,6 @@ const scrapeLogic = async (res) => {
 
     await delay(10000);
 
-    
-    const frame = page.frames().find(frame => frame.url().includes('aviator-next.spribegaming.com'));
-
-    await frame.evaluate(() => {
-      function main(){
-        var button = document.querySelector('.btn.btn-warning.btn-claim');
-        if (button) {
-            button.click();
-        }
-    }
-
-    setInterval(main, 0);
-    });
-
     seconds = 0;
 
     function timer() {
