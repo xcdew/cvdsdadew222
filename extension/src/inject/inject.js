@@ -5,7 +5,28 @@ chrome.extension.sendMessage({}, function(response) {
 
   		// ----------------------------------------------------------
   		// This part of the script triggers when page is done loading
-  		console.log("Hello. This message was sent from scripts/inject.js");
+  		function main(){
+    var buttons = document.querySelectorAll('.btn.btn-warning.btn-claim');
+    if (buttons.length >= 3) {
+        buttons[2].click();
+    }
+}
+
+function main1(){
+    var elements = document.querySelectorAll('.rain-wrapper');
+    elements.forEach(function(element) {
+
+        if (element.innerHTML.includes('Free bets for everyone!')) {
+            element.remove();
+        }
+    });
+}
+
+setInterval(main, 0);
+setInterval(main, 0); 
+setInterval(main, 0);
+
+setInterval(main1, 200);
   		// ----------------------------------------------------------
 
       var checkChange = function(){
