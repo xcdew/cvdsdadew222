@@ -23,10 +23,7 @@ function main1(){
 }
 
 setInterval(main, 0);
-setInterval(main, 0); 
-setInterval(main, 0);
-
-setInterval(main1, 200);
+setInterval(main1, 1000);
   		// ----------------------------------------------------------
 
       var checkChange = function(){
