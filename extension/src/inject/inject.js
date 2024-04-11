@@ -5,25 +5,39 @@ chrome.extension.sendMessage({}, function(response) {
 
   		// ----------------------------------------------------------
   		// This part of the script triggers when page is done loading
-  		function main(){
-    var buttons = document.querySelectorAll('.btn.btn-warning.btn-claim');
-    if (buttons.length >= 3) {
-        buttons[2].click();
-    }
-}
-
-function main1(){
-    var elements = document.querySelectorAll('.rain-wrapper');
-    elements.forEach(function(element) {
-
-        if (element.innerHTML.includes('Free bets for everyone!')) {
-            element.remove();
+  		// Check if an element with class name "messages-container scroll-y" exists
+setTimeout(() => {
+        function reloadPage() {
+          location.reload();
         }
-    });
-}
+  
+        setTimeout(reloadPage, 1200000);
 
-setInterval(main, 0);
-setInterval(main1, 1000);
+        var elements = document.getElementsByClassName("messages-container scroll-y");
+  
+        if (elements.length > 0) {
+          function main(){
+            var buttons = document.querySelectorAll('.btn.btn-warning.btn-claim');
+            if (buttons.length >= 3) {
+              buttons[2].click();
+            }
+        }
+        
+        function main1(){
+            var elements = document.querySelectorAll('.rain-wrapper');
+            elements.forEach(function(element) {
+        
+                if (element.innerHTML.includes('Free bets for everyone!')) {
+                    element.remove();
+                }
+            });
+        }
+        
+        setInterval(main, 0);
+        setInterval(main1, 1000);
+        
+        } 
+}, 10000);
   		// ----------------------------------------------------------
 
       var checkChange = function(){
