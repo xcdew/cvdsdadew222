@@ -17,27 +17,7 @@ const scrapeLogic = async (res) => {
   try {
     const pages = await browser.pages();
     const page = pages[0]; // Get the first page, which is the current tab
-    await page.goto('https://www.betpawa.com.gh/login?returnPath=%2Fgames&gameId=aviator&filter=all');
 
-    await page.waitForSelector('#login-form-phoneNumber');
-    await page.type('#login-form-phoneNumber', '575000356');
-    await page.type('#login-form-password-input', 'rpZCmN$vK3qh4');
-    await page.click('[data-test-id="logInButton"]');
-
-    await page.waitForSelector('.messages-container.scroll-y');
-
-    await page.evaluate(() => {
-        function main() {
-            var button = document.querySelector('.btn-claim');
-            if (button) {
-                button.click();
-            }
-        }
-
-        setInterval(main, 5);
-    });
-
-    var n = 0;
 
     function read() {
         console.log(`Puppeteer has been running for ${n}s`)
@@ -46,7 +26,7 @@ const scrapeLogic = async (res) => {
 
     setInterval(read, 1000);
 
-    // Print the full title
+    
     const logStatement = `Running...`;
     console.log(logStatement);
     res.send(logStatement);
