@@ -22,7 +22,7 @@ const scrapeLogic = async (res) => {
 
     await page.waitForSelector('input[type="tel"]');
     await page.type('input[type="tel"]', '572028292');
-    await page.type('input[type="password"]', 'Tagoe342@$');
+    await page.type('input[type="password"]', 'OiTube342@$');
 
     await page.click('.login-btn');
 
