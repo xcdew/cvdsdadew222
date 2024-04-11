@@ -18,7 +18,7 @@ const scrapeLogic = async (res) => {
     const pages = await browser.pages();
     const page = pages[0]; // Get the first page, which is the current tab
 
-
+    let n = 0;
     function read() {
         console.log(`Puppeteer has been running for ${n}s`)
         n = n + 1;
