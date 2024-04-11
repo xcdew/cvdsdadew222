@@ -1,26 +1,6 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
 
-const fs = require('fs');
-
-// Directory path
-const directoryPath = './';
-
-// Read the contents of the directory
-fs.readdir(directoryPath, (err, files) => {
-  if (err) {
-    console.error('Error reading directory:', err);
-    return;
-  }
-
-  // Filter out directories
-  const directories = files.filter(file => fs.statSync(file).isDirectory());
-
-  // Output the list of directories
-  console.log('Directories:', directories);
-});
-
-
 const scrapeLogic = async (res) => {
   const browser = await puppeteer.launch({
     args: [
